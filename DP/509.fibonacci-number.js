@@ -19,9 +19,9 @@ function fib(n) {
 // Recursion v2: cache
 function fib(n) {
   const cache = new Map()
-  return helper(n, cache)
+  return helper(n)
 
-  function helper(n, cache) {
+  function helper(n) {
     if (n === 0 || n === 1) return n
     if (cache.has(n)) return cache.get(n)
     cache.set(n, helper(n - 1, cache) + helper(n - 2, cache))
