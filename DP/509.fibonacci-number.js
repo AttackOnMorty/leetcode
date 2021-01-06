@@ -20,13 +20,13 @@ function fib(n) {
 function fib(n) {
   const cache = new Map()
   return helper(n, cache)
-}
 
-function helper(n, cache) {
-  if (n === 0 || n === 1) return n
-  if (cache.has(n)) return cache.get(n)
-  cache.set(n, helper(n - 1, cache) + helper(n - 2, cache))
-  return cache.get(n)
+  function helper(n, cache) {
+    if (n === 0 || n === 1) return n
+    if (cache.has(n)) return cache.get(n)
+    cache.set(n, helper(n - 1, cache) + helper(n - 2, cache))
+    return cache.get(n)
+  }
 }
 
 // DP v1
