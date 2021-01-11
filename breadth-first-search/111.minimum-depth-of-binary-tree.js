@@ -34,6 +34,7 @@ function minDepth(root) {
     }
     depth++
   }
+  return -1
 }
 
 // @lc code=end
