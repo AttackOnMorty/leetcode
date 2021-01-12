@@ -11,6 +11,7 @@
  * @return {number}
  */
 
+ // Binary Search
 function search(nums, target) {
   let left = 0
   let right = nums.length - 1
