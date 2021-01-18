@@ -11,7 +11,6 @@
  */
 
 function maxProfit(prices) {
-  const n = prices.length
   let dp_i_0 = 0
   let dp_i_1 = -Infinity
   for (const price of prices) {
