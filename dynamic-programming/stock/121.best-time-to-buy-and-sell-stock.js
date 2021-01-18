@@ -36,9 +36,9 @@ function maxProfit(prices) {
   const n = prices.length
   let dp_i_0 = 0
   let dp_i_1 = -Infinity
-  for (let i = 0; i < n; i++) {
-    dp_i_0 = Math.max(dp_i_0, dp_i_1 + prices[i])
-    dp_i_1 = Math.max(dp_i_1, -prices[i])
+  for (const price of prices) {
+    dp_i_0 = Math.max(dp_i_0, dp_i_1 + price)
+    dp_i_1 = Math.max(dp_i_1, -price)
   }
   return dp_i_0
 }
