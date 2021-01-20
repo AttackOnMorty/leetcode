@@ -11,6 +11,16 @@
  * @return {number}
  */
 
+/*
+dp[-1][k][0] = 0
+dp[-1][k][1] = -Infinity
+dp[i][0][0] = 0
+dp[i][0][1] = -Infinity
+
+dp[i][k][0] = Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i])
+dp[i][k][1] = Math.max(dp[i - 1][k][1], dp[i - 1][k - 1][0] - prices[i])
+*/
+
 function maxProfit(max_k, prices) {
   if (max_k === 0 || prices.length === 0) return 0
   const n = prices.length
@@ -27,7 +37,6 @@ function maxProfit(max_k, prices) {
       addToDP(i, k, 0, Math.max(dp[i - 1][k][0], dp[i - 1][k][1] + prices[i]))
       addToDP(i, k, 1, Math.max(dp[i - 1][k][1], temp - prices[i]))
       temp = dp[i - 1][k][0]
-      console.log(`i: ${i}, k: ${k}`, dp[i][k][0], dp[i][k][1])
     }
   }
   return dp[n - 1][max_k][0]
