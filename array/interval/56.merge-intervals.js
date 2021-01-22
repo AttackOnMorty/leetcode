@@ -12,9 +12,10 @@
 
 function merge(intervals) {
   intervals.sort((a, b) => (a[0] === b[0] ? b[1] - a[1] : a[0] - b[0]))
+
   const res = []
-  let left = intervals[0][0]
-  let right = intervals[0][1]
+  let [left, right] = intervals[0]
+
   for (let i = 1; i < intervals.length; i++) {
     const curr = intervals[i]
     if (curr[0] >= left && curr[1] <= right) continue
@@ -25,6 +26,7 @@ function merge(intervals) {
     }
   }
   res.push([left, right])
+
   return res
 }
 
