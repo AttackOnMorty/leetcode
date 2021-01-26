@@ -11,6 +11,29 @@
  * @return {number[]}
  */
 
+// Two Sum with Duplicate Sets
+function twoSum(numbers, target) {
+  numbers.sort((a, b) => a - b)
+  const res = []
+  let i = 0
+  let j = numbers.length - 1
+  while (i < j) {
+    const left = numbers[i]
+    const right = numbers[j]
+    const sum = left + right
+    if (sum === target) {
+      res.push([left, right])
+      while (i < j && numbers[i] === left) i++
+      while (i < j && numbers[j] === right) j--
+    } else if (sum > target) {
+      while (i < j && numbers[j] === right) j--
+    } else if (sum < target) {
+      while (i < j && numbers[i] === left) i++
+    }
+  }
+  return res
+}
+
 function twoSum(numbers, target) {
   let left = 0
   let right = numbers.length - 1
