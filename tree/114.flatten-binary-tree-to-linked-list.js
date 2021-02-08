@@ -19,20 +19,20 @@
  */
 
 function flatten(root) {
-  if (root === null) return
+    if (root === null) return;
 
-  flatten(root.left)
-  flatten(root.right)
+    flatten(root.left);
+    flatten(root.right);
 
-  let node1 = root.left
-  let node2 = root.right
+    const node1 = root.left;
+    const node2 = root.right;
 
-  root.left = null
-  root.right = node1
+    root.right = node1;
+    root.left = null;
 
-  let p = root
-  while (p.right !== null) p = p.right
-  p.right = node2
+    let curr = root;
+    while (curr.right !== null) curr = curr.right;
+    curr.right = node2;
 }
 
 // @lc code=end
