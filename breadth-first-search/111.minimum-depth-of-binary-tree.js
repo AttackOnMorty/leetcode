@@ -20,21 +20,20 @@
 
 // BFS
 function minDepth(root) {
-  if (root === null) return 0
-  const queue = []
-  queue.push(root)
-  let depth = 1
-  while (queue.length !== 0) {
-    const length = queue.length
-    for (let i = 0; i < length; i++) {
-      const node = queue.shift()
-      if (node.left === null && node.right === null) return depth
-      if (node.left) queue.push(node.left)
-      if (node.right) queue.push(node.right)
+    if (root === null) return 0;
+    let depth = 1;
+    const queue = [root];
+    while (queue.length !== 0) {
+        const length = queue.length;
+        for (let i = 0; i < length; i++) {
+            const node = queue.shift();
+            if (node.left === null && node.right === null) return depth;
+            if (node.left) queue.push(node.left);
+            if (node.right) queue.push(node.right);
+        }
+        depth++;
     }
-    depth++
-  }
-  return -1
+    return -1;
 }
 
 // @lc code=end
