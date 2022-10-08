@@ -12,7 +12,7 @@
 
 // O(n * n!) / O(n)
 function solveNQueens(n) {
-    const board = [...new Array(n)].map((_) => new Array(n).fill('.'));
+    const board = [...Array(n)].map((_) => Array(n).fill('.'));
     const res = [];
     backtrack(0);
     return res;
