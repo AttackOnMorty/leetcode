@@ -71,9 +71,7 @@ function canPartitionKSubsets(nums, k) {
             sum += nums[i];
             used[i] = true;
 
-            if (backtrack(sum, index, i + 1)) {
-                return true;
-            }
+            if (backtrack(sum, index, i + 1)) return true;
 
             sum -= nums[i];
             used[i] = false;
