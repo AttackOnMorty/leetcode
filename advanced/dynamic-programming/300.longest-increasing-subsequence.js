@@ -10,9 +10,7 @@
  * @return {number}
  */
 
-/**
- * dp[i] = max(dp[i], dp[j] + 1)
- */
+// O(n^2) / O(n)
 function lengthOfLIS(nums) {
     const n = nums.length;
     const dp = new Array(n).fill(1);
