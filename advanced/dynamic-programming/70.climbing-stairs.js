@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=509 lang=javascript
+ * @lc app=leetcode id=70 lang=javascript
  *
- * [509] Fibonacci Number
+ * [70] Climbing Stairs
  */
 
 // @lc code=start
@@ -11,13 +11,13 @@
  */
 
 // O(n) / O(n)
-function fib(n) {
+function climbStairs(n) {
     const dp = [];
 
-    dp[0] = 0;
     dp[1] = 1;
+    dp[2] = 2;
 
-    for (let i = 2; i <= n; i++) {
+    for (let i = 3; i <= n; i++) {
         dp[i] = dp[i - 1] + dp[i - 2];
     }
 
@@ -25,16 +25,16 @@ function fib(n) {
 }
 
 // O(n) / O(1)
-function fib(n) {
-    if (n <= 1) {
+function climbStairs(n) {
+    if (n === 1 || n === 2) {
         return n;
     }
 
-    let dp_n_1 = 1;
-    let dp_n_2 = 0;
+    let dp_n_1 = 2;
+    let dp_n_2 = 1;
     let dp_n;
 
-    for (let i = 2; i <= n; i++) {
+    for (let i = 3; i <= n; i++) {
         dp_n = dp_n_1 + dp_n_2;
         dp_n_2 = dp_n_1;
         dp_n_1 = dp_n;
