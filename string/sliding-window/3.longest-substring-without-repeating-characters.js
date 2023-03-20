@@ -18,12 +18,14 @@ function lengthOfLongestSubstring(s) {
     let res = 0;
 
     while (right < s.length) {
-        const char = s[right++];
+        const char = s[right];
         window.set(char, window.has(char) ? 1 + window.get(char) : 1);
+        right++;
 
         while (window.get(char) !== 1) {
-            const char = s[left++];
+            const char = s[left];
             window.set(char, window.get(char) - 1);
+            left++;
         }
 
         res = Math.max(res, right - left);
