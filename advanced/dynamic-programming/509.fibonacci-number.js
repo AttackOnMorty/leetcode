@@ -13,7 +13,6 @@
 // O(n) / O(n)
 function fib(n) {
     const dp = [];
-
     dp[0] = 0;
     dp[1] = 1;
 
