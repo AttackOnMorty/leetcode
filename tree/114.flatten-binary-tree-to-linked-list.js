@@ -18,12 +18,18 @@
  * @return {void} Do not return anything, modify root in-place instead.
  */
 
-// O(n) / O(logn -> n)
+// O(n) / O(height)
 function flatten(root) {
-    if (root === null) return;
+    if (root === null) {
+        return;
+    }
 
     flatten(root.left);
     flatten(root.right);
+
+    if (root.left === null) {
+        return;
+    }
 
     const leftRoot = root.left;
     const rightRoot = root.right;
@@ -31,11 +37,7 @@ function flatten(root) {
     root.left = null;
     root.right = leftRoot;
 
-    if (rightRoot === null) {
-        return;
-    }
-
-    let p = root;
+    let p = leftRoot;
     while (p.right !== null) {
         p = p.right;
     }

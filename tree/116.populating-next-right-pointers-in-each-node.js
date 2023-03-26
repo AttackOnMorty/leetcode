@@ -20,18 +20,24 @@
  * @return {Node}
  */
 
-// O(n) / O(logn -> n)
+// (n) / O(height)
 function connect(root) {
-    if (root === null) return null;
-    connectHelper(root.left, root.right);
+    if (root === null) {
+        return null;
+    }
+
+    connectCore(root.left, root.right);
     return root;
 
-    function connectHelper(node1, node2) {
-        if (node1 === null || node2 === null) return;
+    function connectCore(node1, node2) {
+        if (node1 === null || node2 === null) {
+            return;
+        }
+
         node1.next = node2;
-        connectHelper(node1.left, node1.right);
-        connectHelper(node1.right, node2.left);
-        connectHelper(node2.left, node2.right);
+        connectCore(node1.left, node1.right);
+        connectCore(node1.right, node2.left);
+        connectCore(node2.left, node2.right);
     }
 }
 

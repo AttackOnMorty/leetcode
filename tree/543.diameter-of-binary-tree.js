@@ -18,18 +18,22 @@
  * @return {number}
  */
 
-// O(n) / O(logn -> n)
+// O(n) / O(height)
 function diameterOfBinaryTree(root) {
     let res = 0;
-    postOrder(root);
+    postorder(root);
     return res;
 
-    function postOrder(root) {
-        if (root === null) return 0;
-        const left = postOrder(root.left);
-        const right = postOrder(root.right);
-        res = Math.max(res, left + right);
-        return 1 + Math.max(left, right);
+    function postorder(root) {
+        if (root === null) {
+            return 0;
+        }
+
+        const leftMax = postorder(root.left);
+        const rightMax = postorder(root.right);
+        res = Math.max(res, leftMax + rightMax);
+
+        return 1 + Math.max(leftMax, rightMax);
     }
 }
 
