@@ -1,27 +1,27 @@
 /*
- * @lc app=leetcode id=51 lang=javascript
+ * @lc app=leetcode id=52 lang=javascript
  *
- * [51] N-Queens
+ * [52] N-Queens II
  */
 
 // @lc code=start
 /**
  * @param {number} n
- * @return {string[][]}
+ * @return {number}
  */
 
 // O(n!) / O(n)
-function solveNQueens(n) {
+function totalNQueens(n) {
   const board = Array(n)
     .fill()
     .map(() => Array(n).fill('.'));
-  const result = [];
+  let result = 0;
   backtrack(0);
   return result;
 
   function backtrack(row) {
     if (row === n) {
-      result.push(board.map((item) => item.join('')));
+      result++;
       return;
     }
 
@@ -49,5 +49,4 @@ function solveNQueens(n) {
     return true;
   }
 }
-
 // @lc code=end

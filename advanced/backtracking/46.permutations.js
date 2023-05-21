@@ -10,25 +10,25 @@
  * @return {number[][]}
  */
 
-// O(n * n!) / O(n)
+// O(n!) / O(n)
 function permute(nums) {
-    const res = [];
-    backtrack([], 0);
-    return res;
+  const result = [];
+  backtrack([]);
+  return result;
 
-    function backtrack(path, index) {
-        if (path.length === nums.length) {
-            res.push([...path]);
-            return;
-        }
-
-        for (const num of nums) {
-            if (path.includes(num)) continue;
-            path.push(num);
-            backtrack(path, index + 1);
-            path.pop();
-        }
+  function backtrack(path) {
+    if (path.length === nums.length) {
+      result.push([...path]);
+      return;
     }
+
+    for (const num of nums) {
+      if (path.includes(num)) continue;
+      path.push(num);
+      backtrack(path);
+      path.pop();
+    }
+  }
 }
 
 // @lc code=end
