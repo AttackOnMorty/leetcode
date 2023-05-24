@@ -11,23 +11,22 @@
  * @return {number}
  */
 
-// O(n) / O(n)
+// dp[n] = min(dp[n], 1 + dp[n - coin])
+// dp[0] = 0
+
+// O(n * m) / O(n)
 function coinChange(coins, amount) {
-    const n = amount + 1;
-    const dp = new Array(n).fill(Infinity);
+  const dp = Array(amount + 1).fill(Infinity);
+  dp[0] = 0;
 
-    dp[0] = 0;
-
-    for (let i = 0; i < n; i++) {
-        for (const coin of coins) {
-            if (i - coin < 0) {
-                continue;
-            }
-            dp[i] = Math.min(dp[i], dp[i - coin]);
-        }
+  for (let i = 1; i < dp.length; i++) {
+    for (const coin of coins) {
+      if (i - coin < 0) continue;
+      dp[i] = Math.min(dp[i], 1 + dp[i - coin]);
     }
+  }
 
-    return dp[amount] === Infinity ? -1 : dp[amount];
+  return dp[amount] === Infinity ? -1 : dp[amount];
 }
 
 // @lc code=end

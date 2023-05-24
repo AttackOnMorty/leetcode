@@ -10,36 +10,38 @@
  * @return {number}
  */
 
+// dp[n] = dp[n-1] + dp[n-2]
+// dp[0] = 0
+// dp[1] = 1
+
 // O(n) / O(n)
 function fib(n) {
-    const dp = [];
-    dp[0] = 0;
-    dp[1] = 1;
+  const dp = [];
+  dp[0] = 0;
+  dp[1] = 1;
 
-    for (let i = 2; i <= n; i++) {
-        dp[i] = dp[i - 1] + dp[i - 2];
-    }
+  for (let i = 2; i <= n; i++) {
+    dp[i] = dp[i - 1] + dp[i - 2];
+  }
 
-    return dp[n];
+  return dp[n];
 }
 
 // O(n) / O(1)
 function fib(n) {
-    if (n <= 1) {
-        return n;
-    }
+  if (n <= 1) return n;
 
-    let dp_n_1 = 1;
-    let dp_n_2 = 0;
-    let dp_n;
+  let dp_n_1 = 1;
+  let dp_n_2 = 0;
+  let dp_n;
 
-    for (let i = 2; i <= n; i++) {
-        dp_n = dp_n_1 + dp_n_2;
-        dp_n_2 = dp_n_1;
-        dp_n_1 = dp_n;
-    }
+  for (let i = 2; i <= n; i++) {
+    dp_n = dp_n_1 + dp_n_2;
+    dp_n_2 = dp_n_1;
+    dp_n_1 = dp_n;
+  }
 
-    return dp_n;
+  return dp_n;
 }
 
 // @lc code=end
