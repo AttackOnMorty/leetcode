@@ -12,14 +12,15 @@
 
 // O(n) / O(1)
 function removeDuplicates(nums) {
-    let k = 1;
-    for (let i = 1; i < nums.length; i++) {
-        if (nums[i] !== nums[i - 1]) {
-            nums[k++] = nums[i];
-        }
-    }
+  let k = 1;
 
-    return k;
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i - 1] !== nums[i]) {
+      nums[k++] = nums[i];
+    }
+  }
+
+  return k;
 }
 
 // @lc code=end
