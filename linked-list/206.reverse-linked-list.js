@@ -19,15 +19,20 @@
 
 // O(n) / O(n)
 function reverseList(head) {
-    if (head === null || head.next === null) {
-        return head;
-    }
+  if (head === null) {
+    return null;
+  }
 
-    const newHead = reverseList(head.next);
-    head.next.next = head;
-    head.next = null;
+  if (head.next === null) {
+    return head;
+  }
 
-    return newHead;
+  const newHead = reverseList(head.next);
+
+  head.next.next = head;
+  head.next = null;
+
+  return newHead;
 }
 
 // @lc code=end
