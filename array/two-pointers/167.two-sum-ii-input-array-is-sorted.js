@@ -11,7 +11,7 @@
  * @return {number[]}
  */
 
-// O(n) / (1)
+// O(n) / O(1)
 function twoSum(numbers, target) {
   let left = 0;
   let right = numbers.length - 1;
@@ -27,6 +27,8 @@ function twoSum(numbers, target) {
       right--;
     }
   }
+
+  return [-1, -1];
 }
 
 // @lc code=end
