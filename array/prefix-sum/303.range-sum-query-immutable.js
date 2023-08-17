@@ -11,15 +11,15 @@
 
 // O(n) / O(n)
 function NumArray(nums) {
-    //     0  1  2  3  4  5
-    //  0  1  2  3  4  5  6
-    //  0 -2  0  3 -5  2 -1
-    //  0 -2 -2  1 -4 -2 -3
-    const n = nums.length;
-    this.prefixSum = new Array(n + 1).fill(0);
-    for (let i = 1; i <= n; i++) {
-        this.prefixSum[i] = this.prefixSum[i - 1] + nums[i - 1];
-    }
+  this.prefixSum = [];
+
+  let sum = 0;
+  this.prefixSum.push(sum);
+
+  for (const num of nums) {
+    sum += num;
+    this.prefixSum.push(sum);
+  }
 }
 
 /**
@@ -30,7 +30,7 @@ function NumArray(nums) {
 
 // O(1) / O(1)
 NumArray.prototype.sumRange = function (left, right) {
-    return this.prefixSum[right + 1] - this.prefixSum[left];
+  return this.prefixSum[right + 1] - this.prefixSum[left];
 };
 
 /**
