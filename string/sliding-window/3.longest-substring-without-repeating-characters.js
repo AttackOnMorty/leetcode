@@ -12,26 +12,25 @@
 
 // O(n) / O(n)
 function lengthOfLongestSubstring(s) {
-    const window = new Map();
-    let left = 0;
-    let right = 0;
-    let res = 0;
+  const window = new Map();
 
-    while (right < s.length) {
-        const char = s[right];
-        window.set(char, window.has(char) ? 1 + window.get(char) : 1);
-        right++;
+  let left = 0;
+  let right = 0;
+  let res = 0;
 
-        while (window.get(char) !== 1) {
-            const char = s[left];
-            window.set(char, window.get(char) - 1);
-            left++;
-        }
+  while (right < s.length) {
+    const char = s[right++];
+    window.set(char, window.has(char) ? window.get(char) + 1 : 1);
 
-        res = Math.max(res, right - left);
+    while (window.get(char) !== 1) {
+      const char = s[left++];
+      window.set(char, window.get(char) - 1);
     }
 
-    return res;
+    res = Math.max(res, right - left);
+  }
+
+  return res;
 }
 
 // @lc code=end
