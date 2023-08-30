@@ -18,35 +18,36 @@
  * @return {number[]}
  */
 
-// O(n) / O(height)
+// O(n) / O(logn -> n)
 function preorderTraversal(root) {
+  const result = [];
+  preorder(root);
+  return result;
+
+  function preorder(root) {
     if (root === null) {
-        return [];
+      return;
     }
 
-    const res = [];
-    res.push(root.val);
-    res.push(...preorderTraversal(root.left));
-    res.push(...preorderTraversal(root.right));
-
-    return res;
+    result.push(root.val);
+    preorder(root.left);
+    preorder(root.right);
+  }
 }
 
-// O(n) / O(height)
+// O(n) / O(logn -> n)
 function preorderTraversal(root) {
-    const res = [];
-    preorder(root);
-    return res;
+  const result = [];
 
-    function preorder(root) {
-        if (root === null) {
-            return;
-        }
+  if (root === null) {
+    return result;
+  }
 
-        res.push(root.val);
-        preorder(root.left);
-        preorder(root.right);
-    }
+  result.push(root.val);
+  result.push(...preorderTraversal(root.left));
+  result.push(...preorderTraversal(root.right));
+
+  return result;
 }
 
 // @lc code=end

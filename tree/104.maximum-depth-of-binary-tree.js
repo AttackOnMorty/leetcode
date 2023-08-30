@@ -18,13 +18,13 @@
  * @return {number}
  */
 
-// O(n) / O(height)
+// O(n) / O(logn -> n)
 function maxDepth(root) {
-    if (root === null) {
-        return 0;
-    }
+  if (root === null) {
+    return 0;
+  }
 
-    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
+  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
 }
 
 // @lc code=end
