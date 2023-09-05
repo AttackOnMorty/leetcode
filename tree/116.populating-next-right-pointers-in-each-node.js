@@ -20,25 +20,26 @@
  * @return {Node}
  */
 
-// (n) / O(height)
+// O(n) / O(logn)
 function connect(root) {
-    if (root === null) {
-        return null;
-    }
+  if (root === null) {
+    return null;
+  }
 
-    connectCore(root.left, root.right);
-    return root;
+  connectCore(root.left, root.right);
 
-    function connectCore(node1, node2) {
-        if (node1 === null || node2 === null) {
-            return;
-        }
+  return root;
+}
 
-        node1.next = node2;
-        connectCore(node1.left, node1.right);
-        connectCore(node1.right, node2.left);
-        connectCore(node2.left, node2.right);
-    }
+function connectCore(node1, node2) {
+  if (node1 === null || node2 === null) {
+    return;
+  }
+
+  node1.next = node2;
+  connectCore(node1.left, node1.right);
+  connectCore(node1.right, node2.left);
+  connectCore(node2.left, node2.right);
 }
 
 // @lc code=end

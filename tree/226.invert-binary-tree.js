@@ -18,44 +18,38 @@
  * @return {TreeNode}
  */
 
-// O(n) / O(height)
+// O(n) / O(logn -> n)
 function invertTree(root) {
-    if (root === null) {
-        return null;
-    }
-
-    const left = invertTree(root.left);
-    const right = invertTree(root.right);
-
-    root.left = right;
-    root.right = left;
-
-    return root;
+  preorder(root);
+  return root;
 }
 
-// O(n) / O(height)
+function preorder(root) {
+  if (root === null) {
+    return;
+  }
+
+  const temp = root.left;
+  root.left = root.right;
+  root.right = temp;
+
+  preorder(root.left);
+  preorder(root.right);
+}
+
+// O(n) / O(logn -> n)
 function invertTree(root) {
-    traverse(root);
-    return root;
+  if (root === null) {
+    return null;
+  }
 
-    function traverse(root) {
-        if (root === null) {
-            return;
-        }
+  const left = invertTree(root.left);
+  const right = invertTree(root.right);
 
-        // Preorder
-        const temp = root.left;
-        root.left = root.right;
-        root.right = temp;
+  root.left = right;
+  root.right = left;
 
-        traverse(root.left);
-        traverse(root.right);
-
-        // Postorder
-        // const temp = root.left;
-        // root.left = root.right;
-        // root.right = temp;
-    }
+  return root;
 }
 
 // @lc code=end
