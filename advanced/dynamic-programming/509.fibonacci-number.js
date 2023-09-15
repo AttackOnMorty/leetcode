@@ -10,10 +10,6 @@
  * @return {number}
  */
 
-// dp[n] = dp[n-1] + dp[n-2]
-// dp[0] = 0
-// dp[1] = 1
-
 // O(n) / O(n)
 function fib(n) {
   const dp = [];
@@ -29,11 +25,13 @@ function fib(n) {
 
 // O(n) / O(1)
 function fib(n) {
-  if (n <= 1) return n;
+  if (n === 0 || n === 1) {
+    return n;
+  }
 
+  let dp_n;
   let dp_n_1 = 1;
   let dp_n_2 = 0;
-  let dp_n;
 
   for (let i = 2; i <= n; i++) {
     dp_n = dp_n_1 + dp_n_2;
