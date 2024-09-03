@@ -20,30 +20,30 @@
 
 // O(n) / O(1)
 function detectCycle(head) {
-  let slow = head;
-  let fast = head;
+	let slow = head;
+	let fast = head;
 
-  while (fast && fast.next) {
-    slow = slow.next;
-    fast = fast.next.next;
+	while (fast !== null && fast.next !== null) {
+		slow = slow.next;
+		fast = fast.next.next;
 
-    if (slow === fast) {
-      break;
-    }
-  }
+		if (slow === fast) {
+			break;
+		}
+	}
 
-  if (fast === null || fast.next === null) {
-    return null;
-  }
+	if (fast === null || fast.next === null) {
+		return null;
+	}
 
-  slow = head;
+	slow = head;
 
-  while (slow !== fast) {
-    slow = slow.next;
-    fast = fast.next;
-  }
+	while (slow !== fast) {
+		slow = slow.next;
+		fast = fast.next;
+	}
 
-  return slow;
+	return slow;
 }
 
 // @lc code=end

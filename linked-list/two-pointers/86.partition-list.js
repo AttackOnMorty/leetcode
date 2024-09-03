@@ -20,28 +20,28 @@
 
 // O(n) / O(1)
 function partition(head, x) {
-  const dummy1 = new ListNode();
-  const dummy2 = new ListNode();
-  let p1 = dummy1;
-  let p2 = dummy2;
-  let p = head;
+	const dummy1 = new ListNode();
+	const dummy2 = new ListNode();
+	let p1 = dummy1;
+	let p2 = dummy2;
+	let p = head;
 
-  while (p) {
-    if (p.val < x) {
-      p1.next = p;
-      p1 = p1.next;
-    } else {
-      p2.next = p;
-      p2 = p2.next;
-    }
+	while (p !== null) {
+		if (p.val < x) {
+			p1.next = p;
+			p1 = p1.next;
+		} else {
+			p2.next = p;
+			p2 = p2.next;
+		}
 
-    p = p.next;
-  }
+		p = p.next;
+	}
 
-  p1.next = dummy2.next;
-  p2.next = null;
+	p1.next = dummy2.next;
+	p2.next = null;
 
-  return dummy1.next;
+	return dummy1.next;
 }
 
 // @lc code=end
