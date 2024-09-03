@@ -19,19 +19,23 @@
 
 // O(n) / O(1)
 function deleteDuplicates(head) {
-  const dummy = new ListNode(-Infinity);
-  dummy.next = head;
+	const dummy = new ListNode(-Infinity);
+	dummy.next = head;
 
-  let curr = dummy;
-  while (curr.next) {
-    if (curr.val === curr.next.val) {
-      curr.next = curr.next.next;
-    } else {
-      curr = curr.next;
-    }
-  }
+	let p1 = dummy;
+	let p2 = p1.next;
 
-  return dummy.next;
+	while (p2 !== null) {
+		if (p1.val === p2.val) {
+			p1.next = p1.next.next;
+			p2 = p1.next;
+		} else {
+			p1 = p1.next;
+			p2 = p2.next;
+		}
+	}
+
+	return dummy.next;
 }
 
 // @lc code=end
